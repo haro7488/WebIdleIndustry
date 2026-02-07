@@ -1,145 +1,145 @@
 # CLAUDE.md — WebIdleIndustry
 
-This file provides guidance for AI assistants (and developers) working in this repository.
+이 파일은 이 저장소에서 작업하는 AI 어시스턴트(및 개발자)를 위한 가이드입니다.
 
-## Project Overview
+## 프로젝트 개요
 
-**WebIdleIndustry** is a web-based idle/incremental game with an industrial theme. The repository is currently in its initial bootstrapping phase — no application code has been committed yet.
+**WebIdleIndustry**는 산업 테마의 웹 기반 방치형(idle/incremental) 게임입니다. 현재 저장소는 초기 부트스트래핑 단계에 있으며, 아직 애플리케이션 코드가 커밋되지 않았습니다.
 
-### Current State
+### 현재 상태
 
-- **Status**: Empty repository — no source code, dependencies, or configuration files exist yet.
-- **Branch**: Development is happening on feature branches prefixed with `claude/`.
-- **Remote**: Hosted at `haro7488/WebIdleIndustry`.
+- **상태**: 빈 저장소 — 소스 코드, 의존성, 설정 파일이 아직 없습니다.
+- **브랜치**: `claude/` 접두사가 붙은 기능 브랜치에서 개발이 진행됩니다.
+- **원격 저장소**: `haro7488/WebIdleIndustry`에 호스팅되어 있습니다.
 
-## Repository Structure
+## 저장소 구조
 
 ```
 WebIdleIndustry/
-├── CLAUDE.md          # This file — project guidance for AI assistants
-└── .git/              # Git repository metadata
+├── CLAUDE.md          # 이 파일 — AI 어시스턴트를 위한 프로젝트 가이드
+└── .git/              # Git 저장소 메타데이터
 ```
 
-> **Note**: This section should be updated as the project grows. Add entries for `src/`, `public/`, config files, and other directories as they are created.
+> **참고**: 프로젝트가 성장함에 따라 이 섹션을 업데이트하세요. `src/`, `public/`, 설정 파일 등 새 디렉터리가 생성되면 여기에 추가합니다.
 
-## Development Workflow
+## 개발 워크플로
 
-### Git Conventions
+### Git 규칙
 
-- **Branch naming**: Feature branches use the pattern `claude/<description>-<session-id>`.
-- **Commit messages**: Use clear, descriptive messages summarizing the "why" of changes.
-- **Push**: Always use `git push -u origin <branch-name>`.
-- **No force pushes** to `main`/`master`.
+- **브랜치 명명**: 기능 브랜치는 `claude/<설명>-<세션ID>` 패턴을 사용합니다.
+- **커밋 메시지**: 변경의 "이유"를 요약하는 명확하고 서술적인 메시지를 작성합니다.
+- **푸시**: 항상 `git push -u origin <브랜치명>`을 사용합니다.
+- `main`/`master`에 대한 **강제 푸시 금지**.
 
-### Getting Started (once project is bootstrapped)
+### 시작하기 (프로젝트 부트스트래핑 이후)
 
 ```bash
-# Install dependencies
+# 의존성 설치
 npm install
 
-# Start development server
+# 개발 서버 시작
 npm run dev
 
-# Run tests
+# 테스트 실행
 npm test
 
-# Build for production
+# 프로덕션 빌드
 npm run build
 ```
 
-> **Note**: Update these commands once the actual build tooling is configured.
+> **참고**: 실제 빌드 도구가 구성되면 이 명령어들을 업데이트하세요.
 
-## Architecture Guidelines
+## 아키텍처 가이드라인
 
-The following conventions should be adopted as the project is built out:
+프로젝트를 구축할 때 다음 규칙을 따릅니다:
 
-### Recommended Tech Stack (for a web idle game)
+### 권장 기술 스택 (웹 방치형 게임용)
 
-- **Language**: TypeScript
-- **Build tool**: Vite
-- **UI framework**: Choose one — React, Vue, Svelte, or vanilla DOM
-- **State management**: Centralized game state (e.g., Zustand, Redux, or a custom store)
-- **Testing**: Vitest for unit tests
+- **언어**: TypeScript
+- **빌드 도구**: Vite
+- **UI 프레임워크**: React, Vue, Svelte, 또는 바닐라 DOM 중 선택
+- **상태 관리**: 중앙 집중식 게임 상태 (예: Zustand, Redux, 또는 커스텀 스토어)
+- **테스트**: Vitest (단위 테스트용)
 
-### Code Organization (suggested)
+### 코드 구성 (권장)
 
 ```
 src/
-├── core/              # Core game loop, tick engine, save/load
-├── systems/           # Game systems (production, upgrades, prestige, etc.)
-├── ui/                # UI components and rendering
-├── data/              # Static game data (buildings, upgrades, costs)
-├── utils/             # Shared utility functions
-├── types/             # TypeScript type definitions
-└── main.ts            # Entry point
+├── core/              # 핵심 게임 루프, 틱 엔진, 저장/불러오기
+├── systems/           # 게임 시스템 (생산, 업그레이드, 환생 등)
+├── ui/                # UI 컴포넌트 및 렌더링
+├── data/              # 정적 게임 데이터 (건물, 업그레이드, 비용)
+├── utils/             # 공유 유틸리티 함수
+├── types/             # TypeScript 타입 정의
+└── main.ts            # 진입점
 ```
 
-### Key Idle Game Systems to Implement
+### 핵심 방치형 게임 시스템
 
-1. **Game loop / tick engine** — Drives resource production over time
-2. **Resource system** — Tracks currencies, materials, and rates
-3. **Building/producer system** — Purchasable units that generate resources
-4. **Upgrade system** — Multipliers and unlocks
-5. **Prestige / reset layers** — Long-term progression mechanics
-6. **Offline progress** — Calculate gains while the player is away
-7. **Save/load** — Persist game state to localStorage or IndexedDB
+1. **게임 루프 / 틱 엔진** — 시간 경과에 따른 자원 생산을 구동
+2. **자원 시스템** — 화폐, 재료, 생산률 추적
+3. **건물/생산자 시스템** — 자원을 생성하는 구매 가능한 유닛
+4. **업그레이드 시스템** — 배율 및 잠금 해제
+5. **환생(Prestige) / 리셋 레이어** — 장기 진행 메커니즘
+6. **오프라인 진행** — 플레이어가 접속하지 않는 동안의 이득 계산
+7. **저장/불러오기** — localStorage 또는 IndexedDB에 게임 상태 유지
 
-## Conventions for AI Assistants
+## AI 어시스턴트 규칙
 
-### Do
+### 해야 할 것
 
-- Read existing code before making changes.
-- Keep changes focused — only modify what is requested.
-- Use TypeScript with strict type checking.
-- Write pure functions for game logic where possible (easier to test).
-- Separate game logic from UI rendering.
-- Use descriptive variable and function names.
-- Add tests for core game math and systems.
+- 변경하기 전에 기존 코드를 먼저 읽을 것.
+- 변경 범위를 집중할 것 — 요청받은 것만 수정.
+- strict 타입 검사와 함께 TypeScript를 사용할 것.
+- 게임 로직은 가능한 한 순수 함수로 작성할 것 (테스트가 용이함).
+- 게임 로직과 UI 렌더링을 분리할 것.
+- 서술적인 변수명과 함수명을 사용할 것.
+- 핵심 게임 수학 및 시스템에 대한 테스트를 추가할 것.
 
-### Don't
+### 하지 말아야 할 것
 
-- Don't over-engineer — idle games benefit from simplicity.
-- Don't add frameworks or libraries without a clear need.
-- Don't create unnecessary abstraction layers.
-- Don't commit secrets, credentials, or `.env` files.
-- Don't modify unrelated code when fixing bugs or adding features.
+- 과도한 설계 금지 — 방치형 게임은 단순함이 장점.
+- 명확한 필요 없이 프레임워크나 라이브러리를 추가하지 말 것.
+- 불필요한 추상화 레이어를 만들지 말 것.
+- 비밀 정보, 자격 증명, `.env` 파일을 커밋하지 말 것.
+- 버그 수정이나 기능 추가 시 관련 없는 코드를 수정하지 말 것.
 
-### Big Number Handling
+### 큰 수(Big Number) 처리
 
-Idle games often deal with very large numbers. Consider using a big number library (e.g., `break_infinity.js` or `decimal.js`) from the start to avoid refactoring later.
+방치형 게임은 매우 큰 숫자를 자주 다룹니다. 나중에 리팩터링을 피하기 위해 처음부터 큰 수 라이브러리(예: `break_infinity.js` 또는 `decimal.js`)를 사용하는 것을 권장합니다.
 
-### Save System
+### 저장 시스템
 
-- Serialize game state to JSON.
-- Store in `localStorage` with a versioned schema.
-- Include migration logic for save format changes.
-- Encode saves (e.g., base64) to prevent casual tampering.
+- 게임 상태를 JSON으로 직렬화.
+- 버전이 지정된 스키마로 `localStorage`에 저장.
+- 저장 형식 변경 시 마이그레이션 로직 포함.
+- 임의 변조 방지를 위해 저장 데이터 인코딩 (예: base64).
 
-## Testing
+## 테스트
 
-> **Note**: Update this section once a test runner is configured.
+> **참고**: 테스트 러너가 구성되면 이 섹션을 업데이트하세요.
 
-- Unit test core game math (resource calculations, cost formulas, prestige formulas).
-- Test save/load round-tripping.
-- Test offline progress calculations.
+- 핵심 게임 수학 단위 테스트 (자원 계산, 비용 공식, 환생 공식).
+- 저장/불러오기 왕복 테스트.
+- 오프라인 진행 계산 테스트.
 
-## Useful Commands
+## 주요 명령어
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server |
-| `npm run build` | Production build |
-| `npm test` | Run test suite |
-| `npm run lint` | Lint code |
+| 명령어 | 설명 |
+|--------|------|
+| `npm install` | 의존성 설치 |
+| `npm run dev` | 개발 서버 시작 |
+| `npm run build` | 프로덕션 빌드 |
+| `npm test` | 테스트 실행 |
+| `npm run lint` | 코드 린트 |
 
-> **Note**: These are placeholders. Update once `package.json` is created.
+> **참고**: 위 명령어는 임시 항목입니다. `package.json`이 생성되면 업데이트하세요.
 
-## Updating This File
+## 이 파일 업데이트 방법
 
-Keep this file current as the project evolves:
+프로젝트가 발전함에 따라 이 파일을 최신 상태로 유지하세요:
 
-- Add new directories and key files to the repository structure section.
-- Document actual commands once the build system is set up.
-- Record architectural decisions and patterns as they are established.
-- Remove placeholder notes and replace with real information.
+- 저장소 구조 섹션에 새 디렉터리와 주요 파일을 추가.
+- 빌드 시스템이 설정되면 실제 명령어로 업데이트.
+- 아키텍처 결정과 패턴이 확립되면 기록.
+- 임시 참고 사항을 실제 정보로 교체.
