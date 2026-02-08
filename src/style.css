@@ -1,0 +1,182 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0f1923;
+  color: #e0e0e0;
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.game {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2a3a4a;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: 1.2rem;
+  color: #4fc3f7;
+}
+
+.playtime {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* 자원 카드 */
+.resources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.resource-card {
+  background: #1a2a3a;
+  border-radius: 8px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px 8px;
+}
+
+.res-icon {
+  grid-row: 1 / 3;
+  font-size: 1.4rem;
+  align-self: center;
+  color: #4fc3f7;
+  font-weight: bold;
+}
+
+.res-name {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.res-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.res-rate {
+  grid-column: 2;
+  font-size: 0.7rem;
+  color: #66bb6a;
+}
+
+/* 건물 섹션 */
+.buildings h2 {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.building-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a2a3a;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  transition: opacity 0.2s;
+}
+
+.building-card.disabled {
+  opacity: 0.5;
+}
+
+.building-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.building-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.building-count {
+  color: #4fc3f7;
+  font-size: 0.85rem;
+}
+
+.building-desc {
+  font-size: 0.75rem;
+  color: #888;
+  margin: 2px 0;
+}
+
+.building-effect {
+  font-size: 0.7rem;
+  color: #66bb6a;
+}
+
+.buy-btn {
+  background: #1565c0;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-left: 10px;
+  min-width: 90px;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.buy-btn:active:not(:disabled) {
+  background: #1e88e5;
+}
+
+.buy-btn:disabled {
+  background: #333;
+  cursor: not-allowed;
+  color: #666;
+}
+
+.buy-btn small {
+  font-size: 0.65rem;
+  color: #aaa;
+}
+
+/* 액션 버튼 */
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #2a3a4a;
+}
+
+.save-btn, .reset-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.reset-btn {
+  background: #c62828;
+  color: #fff;
+}
